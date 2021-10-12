@@ -7,7 +7,6 @@ class CandidatesController < ApplicationController
   end
 
   def create
-  
   end
 
 end  
