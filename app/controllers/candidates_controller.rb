@@ -24,6 +24,10 @@ class CandidatesController < ApplicationController
     end  
   end
 
+  def edit
+  
+  end
+
   private
   def candidate_params
     params.require(:candidate).permit(:name, :party, :age, :politics)
