@@ -25,7 +25,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-  
+    @candidate = Candidate.find_by(id: params[:id])
   end
 
   private

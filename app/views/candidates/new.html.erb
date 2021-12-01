@@ -10,7 +10,7 @@
 
 <% end %>
 
-<%= form_for(@candidate) do |form| %>
+<%= form_with model: @candidate do |form| %>
 
 <div>
   <%= form.label :name %>
