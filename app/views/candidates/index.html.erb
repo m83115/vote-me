@@ -18,7 +18,8 @@
       <td><%= candidate.party %></td>
       <td><%= candidate.age %></td>
       <td>
-        <%= link_to 'update', edit_candidate_path(candidate.id) %>  
+        <%= link_to 'update', edit_candidate_path(candidate.id) %>
+        <%= link_to 'delete', candidate_path(candidate.id), method: 'delete', data: {confirm: '你確定要刪除?!'} %>  
       </td>
     </tr>
   <% end %>
