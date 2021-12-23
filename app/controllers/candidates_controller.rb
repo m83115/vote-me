@@ -49,6 +49,9 @@ class CandidatesController < ApplicationController
 
   def vote
     @candidate = Candidate.find_by(id: params[:id])
+
+    VoteLog.new(candidate: @candidate, ip_address: request.remote_ip)
+
     # @candidate.votes = @candidate.votes + 1
     @candidate.increment(:votes)
     @candidate.save
