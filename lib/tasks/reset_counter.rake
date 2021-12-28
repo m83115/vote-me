@@ -1,10 +1,10 @@
 namespace :db do
-  desk 'Reset Counter Cache!'
+  desc 'Reset Counter Cache!'
   task :reset_counter => :environment do
-    
+    puts "prepare to reset ciunter"
     Candidate.all.each do |candidate|
       Candidate.reset_counters(candidate.id, :vote_logs)
     end
-      
+    puts "done!"
   end
 end
