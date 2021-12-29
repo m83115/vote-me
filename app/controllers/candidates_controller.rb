@@ -5,7 +5,7 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find_by(id: params[:id])
+    find_candidate
   end
 
   def new
@@ -13,7 +13,7 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    @candidate = Candidate.new(candidate_params)
+    find_candidate
 
     if @candidate.save
       flash[:notice] = "Candidate created!"
@@ -25,11 +25,11 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-    @candidate = Candidate.find_by(id: params[:id])
+    find_candidate
   end
 
   def update
-    @candidate = Candidate.find_by(id: params[:id])
+    find_candidate
 
     if @candidate.update(candidate_params)
       flash[:notice] = "Candidate update!"
@@ -40,7 +40,7 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
-    @candidate = Candidate.find_by(id: params[:id])
+    find_candidate
     @candidate.destroy
 
     flash[:notice] = "Candidate deleted!"
@@ -48,7 +48,7 @@ class CandidatesController < ApplicationController
   end
 
   def vote
-    @candidate = Candidate.find_by(id: params[:id])
+    find_candidate
 
     # VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
 
@@ -61,6 +61,9 @@ class CandidatesController < ApplicationController
   private
   def candidate_params
     params.require(:candidate).permit(:name, :party, :age, :politics)
-  end  
-
+  end
+  
+  def find_candidate
+    @candidate = Candidate.find_by(id: params[:id])
+  end
 end  
