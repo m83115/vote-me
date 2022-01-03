@@ -1,11 +1,13 @@
 class CandidatesController < ApplicationController
 
+  before_action :find_candidate
+
   def index
     @candidates = Candidate.all
   end
 
   def show
-    find_candidate
+    
   end
 
   def new
@@ -13,7 +15,7 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    find_candidate
+    
 
     if @candidate.save
       flash[:notice] = "Candidate created!"
@@ -25,11 +27,11 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-    find_candidate
+    
   end
 
   def update
-    find_candidate
+    
 
     if @candidate.update(candidate_params)
       flash[:notice] = "Candidate update!"
@@ -40,7 +42,7 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
-    find_candidate
+    
     @candidate.destroy
 
     flash[:notice] = "Candidate deleted!"
@@ -48,7 +50,7 @@ class CandidatesController < ApplicationController
   end
 
   def vote
-    find_candidate
+    
 
     # VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
 
