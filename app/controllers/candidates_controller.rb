@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
 
-  before_action :find_candidate
+  before_action :find_candidate, only [:show, :edit, :update, :destroy, :vote]
 
   def index
     @candidates = Candidate.all
