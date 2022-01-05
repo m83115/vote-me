@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
 
-  before_action :find_candidate, only [:show, :edit, :update, :destroy, :vote]
+  before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
     @candidates = Candidate.all
@@ -18,8 +18,7 @@ class CandidatesController < ApplicationController
     
 
     if @candidate.save
-      flash[:notice] = "Candidate created!"
-      redirect_to '/candidates'
+      redirect_to '/candidates', notice: 'Candidate created!'
     else
       # NG
       render :new
@@ -34,30 +33,21 @@ class CandidatesController < ApplicationController
     
 
     if @candidate.update(candidate_params)
-      flash[:notice] = "Candidate update!"
-      redirect_to '/candidates'
+      redirect_to '/candidates', notice: 'Candidate created!'
     else
       render :edit
     end
   end
 
-  def destroy
-    
+  def destroy  
     @candidate.destroy
-
-    flash[:notice] = "Candidate deleted!"
-    redirect_to '/candidates'
+    redirect_to '/candidates', notice: 'Candidate created!'
   end
 
   def vote
-    
-
     # VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
-
     @candidate.vote_logs.create(ip_address: request.remote_ip)
-
-    flash[:notice] = "Votde!"
-    redirect_to '/candidates'
+    redirect_to '/candidates', notice: 'Votde!'
   end
 
   private
