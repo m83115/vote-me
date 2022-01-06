@@ -15,8 +15,6 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    
-
     if @candidate.save
       redirect_to '/candidates', notice: 'Candidate created!'
     else
@@ -30,8 +28,6 @@ class CandidatesController < ApplicationController
   end
 
   def update
-    
-
     if @candidate.update(candidate_params)
       redirect_to '/candidates', notice: 'Candidate created!'
     else
