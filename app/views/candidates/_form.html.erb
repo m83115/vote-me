@@ -1,14 +1,14 @@
 <% if @candidate.errors.any? %>
 
 <ul>
-  <% @candidate.errors.full_messages.each do |message| %>
+  <% candidate.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %> 
 </ul>
 
 <% end %>
 
-<%= form_with model: @candidate do |form| %>
+<%= form_with model: candidate do |form| %>
 
 <div>
   <%= form.label :name %>
